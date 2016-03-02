@@ -28,10 +28,10 @@ The preferred way to set the addressing style is to use the ``addressing_style``
 config parameter when you create your client or resource.::
 
     import boto3
-    from botocore.client import Config
 
     # Other valid options here are 'auto' (default) and 'virtual'
-    s3 = boto3.client('s3', 'us-west-2', config=Config(s3={'addressing_style': 'path'}))
+    config = boto3.Config(s3={'addressing_style': 'path'})
+    s3 = boto3.client('s3', 'us-west-2', config=config)
 
 
 Using the Transfer Manager
@@ -111,10 +111,9 @@ you only need to make sure that the client used has signature version 4
 configured.::
 
     import boto3
-    from botocore.client import Config
 
     # Get the service client with sigv4 configured
-    s3 = boto3.client('s3', config=Config(signature_version='s3v4'))
+    s3 = boto3.client('s3', config=boto3.Config(signature_version='s3v4'))
 
     # Generate the URL to get 'key-name' from 'bucket-name'
     url = s3.generate_presigned_url(

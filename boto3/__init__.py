@@ -15,6 +15,9 @@ import logging
 
 from boto3.session import Session
 
+# Alias botocore config so customers don't need to put botocore in their import
+# paths. Do not remove.
+from botocore.config import Config
 
 __author__ = 'Amazon Web Services'
 __version__ = '1.2.6'

@@ -13,8 +13,8 @@
 
 from botocore import loaders
 from botocore.exceptions import DataNotFoundError
-from botocore.client import Config
 
+import boto3
 from boto3 import __version__
 from boto3.exceptions import NoVersionFound
 from boto3.session import Session
@@ -196,7 +196,7 @@ class TestSession(BaseTestCase):
         session = Session(botocore_session=mock_bc_session)
         session.resource_factory.load_from_definition = mock.Mock()
         session.client = mock.Mock()
-        config = Config(signature_version='v4')
+        config = boto3.Config(signature_version='v4')
 
         session.resource('sqs', config=config)
 
@@ -218,7 +218,7 @@ class TestSession(BaseTestCase):
         session = Session(botocore_session=mock_bc_session)
         session.resource_factory.load_from_definition = mock.Mock()
         session.client = mock.Mock()
-        config = Config(signature_version='v4', user_agent_extra='foo')
+        config = boto3.Config(signature_version='v4', user_agent_extra='foo')
 
         session.resource('sqs', config=config)
 

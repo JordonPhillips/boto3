@@ -23,8 +23,8 @@ import datetime
 
 from tests import unittest, unique_id
 from botocore.compat import six
-from botocore.client import Config
 
+import boto3
 import boto3.session
 import boto3.s3.transfer
 
@@ -374,7 +374,7 @@ class TestS3Transfers(unittest.TestCase):
 
         client = self.session.client(
             's3', self.region,
-            config=Config(signature_version='s3v4'))
+            config=boto3.Config(signature_version='s3v4'))
         transfer = boto3.s3.transfer.S3Transfer(client)
         filename = self.files.create_file_with_size(
             '10mb.txt', filesize=10 * 1024 * 1024)

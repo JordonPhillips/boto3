@@ -15,7 +15,6 @@ import copy
 import os
 
 import botocore.session
-from botocore.client import Config
 
 import boto3
 import boto3.utils
@@ -190,7 +189,7 @@ class Session(object):
         :param aws_session_token: The session token to use when creating
             the client.  Same semantics as aws_access_key_id above.
 
-        :type config: botocore.client.Config
+        :type config: boto3.Config
         :param config: Advanced client configuration options. If region_name
             is specified in the client config, its value will take precedence
             over environment variables and configuration values, but not over
@@ -265,7 +264,7 @@ class Session(object):
         :param aws_session_token: The session token to use when creating
             the client.  Same semantics as aws_access_key_id above.
 
-        :type config: botocore.client.Config
+        :type config: boto3.Config
         :param config: Advanced client configuration options. If region_name
             is specified in the client config, its value will take precedence
             over environment variables and configuration values, but not over
@@ -290,7 +289,7 @@ class Session(object):
                 config = copy.deepcopy(config)
                 config.user_agent_extra = 'Resource'
         else:
-            config = Config(user_agent_extra='Resource')
+            config = boto3.Config(user_agent_extra='Resource')
         client = self.client(
             service_name, region_name=region_name, api_version=api_version,
             use_ssl=use_ssl, verify=verify, endpoint_url=endpoint_url,
