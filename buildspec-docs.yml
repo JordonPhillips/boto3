@@ -24,8 +24,8 @@ phases:
       - cd ..
   post_build:
     commands:
-      - aws s3 sync --delete docs/build/html/ s3://${DOCS_BUCKET}/botocore/latest/ --acl public-read
-      - aws s3 sync --delete docs/build/html/ s3://${DOCS_BUCKET}/botocore/$(python setup.py --version)/ --acl public-read
+      - aws s3 sync --delete docs/build/html/ s3://${DOCS_BUCKET}/boto3/latest/ --acl public-read
+      - aws s3 sync --delete docs/build/html/ s3://${DOCS_BUCKET}/boto3/$(python setup.py --version)/ --acl public-read
 
 artifacts:
   files:
