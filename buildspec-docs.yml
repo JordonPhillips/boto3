@@ -9,6 +9,7 @@ phases:
     commands:
       - pip install -r boto3-source/requirements.txt
       - pip install -r boto3-source/requirements-docs.txt
+      - pip install -e boto3-source
       - pip install -e botocore-source
   pre_build:
     commands:
