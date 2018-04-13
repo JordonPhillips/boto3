@@ -1,19 +1,15 @@
 version: 0.2
 
-env:
-  parameter-store:
-    DOCS_BUCKET: DOCS_BUCKET
-
 phases:
   install:
     commands:
-      - pip install -r boto3-source/requirements.txt
-      - pip install -r boto3-source/requirements-docs.txt
-      - pip install -e boto3-source
+      - pip install -r Boto3Source/requirements.txt
+      - pip install -r Boto3Source/requirements-docs.txt
+      - pip install -e Boto3Source
       - pip install -e botocore-source
   pre_build:
     commands:
-      - cd boto3-source
+      - cd Boto3Source
       - pip freeze
       - python setup.py --version
       - aws --version
@@ -23,10 +19,6 @@ phases:
       - cd docs
       - make html
       - cd ..
-  post_build:
-    commands:
-      - aws s3 sync --delete docs/build/html/ s3://${DOCS_BUCKET}/boto3/latest/ --acl public-read
-      - aws s3 sync --delete docs/build/html/ s3://${DOCS_BUCKET}/boto3/$(python setup.py --version)/ --acl public-read
 
 artifacts:
   files:
