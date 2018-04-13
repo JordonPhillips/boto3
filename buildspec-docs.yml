@@ -6,7 +6,7 @@ phases:
       - pip install -r Boto3Source/requirements.txt
       - pip install -r Boto3Source/requirements-docs.txt
       - pip install -e Boto3Source
-      - pip install -e botocore-source
+      - pip install -e BotocoreSource
   pre_build:
     commands:
       - cd Boto3Source
