@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - pip install pip==10.0.0
       - pip install -r Boto3Source/requirements.txt
       - pip install -r Boto3Source/requirements-docs.txt
       - pip install -e Boto3Source
