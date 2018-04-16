@@ -24,4 +24,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base_directory: docs/build/html/
+  base_directory: Boto3Source/docs/build/html/
